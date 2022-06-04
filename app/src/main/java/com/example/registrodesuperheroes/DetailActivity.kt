@@ -1,5 +1,6 @@
 package com.example.registrodesuperheroes
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.registrodesuperheroes.databinding.ActivityDetailBinding
@@ -7,6 +8,7 @@ import com.example.registrodesuperheroes.databinding.ActivityDetailBinding
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val SUPERHERO_KEY = "superhero"
+        const val BITMAP_KEY = "bitmap"
 
     }
 
@@ -17,11 +19,9 @@ class DetailActivity : AppCompatActivity() {
 
         val bundle = intent.extras!!
         val superhero = bundle.getParcelable<Superhero>(SUPERHERO_KEY)!!
+        val bitmap = bundle.getParcelable<Bitmap>(BITMAP_KEY)!!
 
-
-        binding.heroName.text = superhero.name
-        binding.alterEgoText.text = superhero.alterEgo
-        binding.shortBioText.text = superhero.bio
-        binding.ratingBar.rating = superhero.power
+        binding.detailImageView.setImageBitmap(bitmap)
+        binding.superhero = superhero
     }
 }
