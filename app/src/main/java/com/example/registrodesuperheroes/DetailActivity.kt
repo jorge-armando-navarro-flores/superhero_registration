@@ -1,6 +1,7 @@
 package com.example.registrodesuperheroes
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.registrodesuperheroes.databinding.ActivityDetailBinding
@@ -19,7 +20,8 @@ class DetailActivity : AppCompatActivity() {
 
         val bundle = intent.extras!!
         val superhero = bundle.getParcelable<Superhero>(SUPERHERO_KEY)!!
-        val bitmap = bundle.getParcelable<Bitmap>(BITMAP_KEY)!!
+        val bitmapDirectory = bundle.getString(BITMAP_KEY)!!
+        val bitmap = BitmapFactory.decodeFile(bitmapDirectory)
 
         binding.detailImageView.setImageBitmap(bitmap)
         binding.superhero = superhero
